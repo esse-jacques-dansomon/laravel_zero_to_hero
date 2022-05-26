@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', Controller::class . '@index');
+Route::get('/articles', function (){
+    return \App\Models\Article::with('type')->paginate(10);
+});
+Route::get('/types', function (){
+    return \App\Models\TypeArticle::with('articles')->paginate(10);
+});
 
 Route::get('/user', [Controller::class, 'home']);

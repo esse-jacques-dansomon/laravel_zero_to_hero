@@ -17,8 +17,16 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+
         return [
-            'name' => $this->faker->name(),
+            'firstname' => $this->faker->firstName(),
+            'lastname' => $this->faker->lastName(),
+            'photo' => $this->faker->imageUrl(),
+            "sex"=> array_rand(['M', 'F'],1),
+            "NCI"=>array_rand(['Passport', 'NCI', 'Permis',],1),
+            "noNCI"=>$this->faker->swiftBicNumber,
+            "phone1"=>($this->faker->phoneNumber),
+            "phone2"=>$this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
